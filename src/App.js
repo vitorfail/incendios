@@ -9,189 +9,189 @@ import { useEffect, useState } from 'react';
 mapboxgl.workerClass = require('worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker').default;
 const MAPBOX_TOKEN = 'pk.eyJ1Ijoidml0b3JmYWlsIiwiYSI6ImNsOHhyajNjYjA4aXIzdW56ZDN1NjI0ZjUifQ.dYaH3rrTcs8WwFHCHCSCRQ';
 const cidades = ["Moraújo"	,
-          "Frecheirinha"	,
-          "Itaiçaba"	,
-          "Orós"	,
-          "Acarape"	,
-          "Reriutaba"	,
-          "Redenção"	,
-          "Eusébio"	,
-          "Quixeré"	,
-          "Iracema"	,
-          "Guaramiranga"	,
-          "Crateús"	,
-          "Brejo Santo"	,
-          "Tabuleiro do Norte"	,
-          "Quixelô"	,
-          "Groaíras"	,
-          "Aracoiaba"	,
-          "Palhano"	,
-          "Alcântaras"	,
-          "Senador Sá"	,
-          "Cedro"	,
-          "Cruz"	,
-          "Morada Nova"	,
-          "Tauá"	,
-          "Ibicuitinga"	,
-          "São Gonçalo do Amarante"	,
-          "Jijoca de Jericoacoara"	,
-          "Paracuru"	,
-          "Pereiro"	,
-          "Icapuí"	,
-          "Varjota"	,
-          "Aratuba"	,
-          "Catunda"	,
-          "Capistrano"	,
-          "Russas"	,
-          "Farias Brito"	,
-          "Cariré"	,
-          "Hidrolândia"	,
-          "Fortim"	,
-          "Martinópole"	,
-          "Crato"	,
-          "Mucambo"	,
-          "Sobral"	,
-          "Jaguaribe"	,
-          "Ararendá"	,
-          "Potiretama"	,
-          "Banabuiú"	,
-          "Tianguá"	,
-          "Limoeiro do Norte"	,
-          "Carnaubal"	,
-          "Chaval"	,
-          "Cariús"	,
-          "Piquet Carneiro"	,
-          "Santa Quitéria"	,
-          "Uruoca"	,
-          "Ipaporanga"	,
-          "Itaitinga"	,
-          "Nova Russas"	,
-          "Quixeramobim"	,
-          "Ereré"	,
-          "Ipu"	,
-          "Milhã"	,
-          "Pacoti"	,
-          "Baturité"	,
-          "Milagres"	,
-          "Iguatu"	,
-          "Mulungu"	,
-          "Monsenhor Tabosa"	,
-          "Barbalha"	,
-          "Meruoca"	,
-          "Horizonte"	,
-          "Baixio"	,
-          "Quixadá"	,
-          "Alto Santo"	,
-          "Tamboril"	,
-          "Pindoretama"	,
-          "Juazeiro do Norte"	,
-          "Coreaú"	,
-          "Jaguaruana"	,
-          "Antonina do Norte"	,
-          "Jaguaretama"	,
-          "Icó"	,
-          "Itapiúna"	,
-          "Aracati"	,
-          "Bela Cruz"	,
-          "São João do Jaguaribe"	,
-          "Beberibe"	,
-          "Pentecoste"	,
-          "Porteiras"	,
-          "São Luís do Curu"	,
-          "Ipaumirim"	,
-          "Granjeiro"	,
-          "Várzea Alegre"	,
-          "Itatira"	,
-          "Miraíma"	,
-          "Assaré"	,
-          "Pires Ferreira"	,
-          "Pacujá"	,
-          "Jati"	,
-          "Camocim"	,
-          "Chorozinho"	,
-          "Graça"	,
-          "Jaguaribara"	,
-          "Deputado Irapuan Pinheiro"	,
-          "Lavras da Mangabeira"	,
-          "Mauriti"	,
-          "Fortaleza"	,
-          "Mombaça"	,
-          "Solonópole"	,
-          "Maracanaú"	,
-          "Apuiarés"	,
-          "Tejuçuoca"	,
-          "Campos Sales"	,
-          "Ibaretama"	,
-          "Tururu"	,
-          "Ipueiras"	,
-          "Maranguape"	,
-          "Altaneira"	,
-          "Paraipaba"	,
-          "Penaforte"	,
-          "São Benedito"	,
-          "Cascavel"	,
-          "Senador Pompeu"	,
-          "Barroquinha"	,
-          "Nova Olinda"	,
-          "Arneiroz"	,
-          "Ocara"	,
-          "Aquiraz"	,
-          "Viçosa do Ceará"	,
-          "Uruburetama"	,
-          "Independência"	,
-          "Paramoti"	,
-          "Choró"	,
-          "Itarema"	,
-          "Itapipoca"	,
-          "Acaraú"	,
-          "Barro"	,
-          "Quiterianópolis"	,
-          "Boa Viagem"	,
-          "Croatá"	,
-          "Tarrafas"	,
-          "Santana do Cariri"	,
-          "Pacajus"	,
-          "Saboeiro"	,
-          "Jucás"	,
-          "Santana do Acaraú"	,
-          "Poranga"	,
-          "Acopiara"	,
-          "Caridade"	,
-          "Pacatuba"	,
-          "Aurora"	,
-          "Palmácia"	,
-          "Forquilha"	,
-          "Canindé"	,
-          "Madalena"	,
-          "Barreira"	,
-          "Ibiapina"	,
-          "Jardim"	,
-          "General Sampaio"	,
-          "Salitre"	,
-          "Umari"	,
-          "Marco"	,
-          "Amontada"	,
-          "Massapê"	,
-          "Missão Velha"	,
-          "Morrinhos"	,
-          "Guaraciaba do Norte"	,
-          "Araripe"	,
-          "Guaiúba"	,
-          "Caucaia"	,
-          "Itapajé"	,
-          "Potengi"	,
-          "Novo Oriente"	,
-          "Granja"	,
-          "Caririaçu"	,
-          "Ubajara"	,
-          "Abaiara"	,
-          "Parambu"	,
-          "Umirim"	,
-          "Irauçuba"	,
-          "Aiuaba"	,
-          "Trairi"	,
-          "Catarina"	,
-          "Pedra Branca"]
+		  "Frecheirinha"	,
+		  "Itaiçaba"	,
+		  "Orós"	,
+		  "Acarape"	,
+		  "Reriutaba"	,
+		  "Redenção"	,
+		  "Eusébio"	,
+		  "Quixeré"	,
+		  "Iracema"	,
+		  "Guaramiranga"	,
+		  "Crateús"	,
+		  "Brejo Santo"	,
+		  "Tabuleiro do Norte"	,
+		  "Quixelô"	,
+		  "Groaíras"	,
+		  "Aracoiaba"	,
+		  "Palhano"	,
+		  "Alcântaras"	,
+		  "Senador Sá"	,
+		  "Cedro"	,
+		  "Cruz"	,
+		  "Morada Nova"	,
+		  "Tauá"	,
+		  "Ibicuitinga"	,
+		  "São Gonçalo do Amarante"	,
+		  "Jijoca de Jericoacoara"	,
+		  "Paracuru"	,
+		  "Pereiro"	,
+		  "Icapuí"	,
+		  "Varjota"	,
+		  "Aratuba"	,
+		  "Catunda"	,
+		  "Capistrano"	,
+		  "Russas"	,
+		  "Farias Brito"	,
+		  "Cariré"	,
+		  "Hidrolândia"	,
+		  "Fortim"	,
+		  "Martinópole"	,
+		  "Crato"	,
+		  "Mucambo"	,
+		  "Sobral"	,
+		  "Jaguaribe"	,
+		  "Ararendá"	,
+		  "Potiretama"	,
+		  "Banabuiú"	,
+		  "Tianguá"	,
+		  "Limoeiro do Norte"	,
+		  "Carnaubal"	,
+		  "Chaval"	,
+		  "Cariús"	,
+		  "Piquet Carneiro"	,
+		  "Santa Quitéria"	,
+		  "Uruoca"	,
+		  "Ipaporanga"	,
+		  "Itaitinga"	,
+		  "Nova Russas"	,
+		  "Quixeramobim"	,
+		  "Ereré"	,
+		  "Ipu"	,
+		  "Milhã"	,
+		  "Pacoti"	,
+		  "Baturité"	,
+		  "Milagres"	,
+		  "Iguatu"	,
+		  "Mulungu"	,
+		  "Monsenhor Tabosa"	,
+		  "Barbalha"	,
+		  "Meruoca"	,
+		  "Horizonte"	,
+		  "Baixio"	,
+		  "Quixadá"	,
+		  "Alto Santo"	,
+		  "Tamboril"	,
+		  "Pindoretama"	,
+		  "Juazeiro do Norte"	,
+		  "Coreaú"	,
+		  "Jaguaruana"	,
+		  "Antonina do Norte"	,
+		  "Jaguaretama"	,
+		  "Icó"	,
+		  "Itapiúna"	,
+		  "Aracati"	,
+		  "Bela Cruz"	,
+		  "São João do Jaguaribe"	,
+		  "Beberibe"	,
+		  "Pentecoste"	,
+		  "Porteiras"	,
+		  "São Luís do Curu"	,
+		  "Ipaumirim"	,
+		  "Granjeiro"	,
+		  "Várzea Alegre"	,
+		  "Itatira"	,
+		  "Miraíma"	,
+		  "Assaré"	,
+		  "Pires Ferreira"	,
+		  "Pacujá"	,
+		  "Jati"	,
+		  "Camocim"	,
+		  "Chorozinho"	,
+		  "Graça"	,
+		  "Jaguaribara"	,
+		  "Deputado Irapuan Pinheiro"	,
+		  "Lavras da Mangabeira"	,
+		  "Mauriti"	,
+		  "Fortaleza"	,
+		  "Mombaça"	,
+		  "Solonópole"	,
+		  "Maracanaú"	,
+		  "Apuiarés"	,
+		  "Tejuçuoca"	,
+		  "Campos Sales"	,
+		  "Ibaretama"	,
+		  "Tururu"	,
+		  "Ipueiras"	,
+		  "Maranguape"	,
+		  "Altaneira"	,
+		  "Paraipaba"	,
+		  "Penaforte"	,
+		  "São Benedito"	,
+		  "Cascavel"	,
+		  "Senador Pompeu"	,
+		  "Barroquinha"	,
+		  "Nova Olinda"	,
+		  "Arneiroz"	,
+		  "Ocara"	,
+		  "Aquiraz"	,
+		  "Viçosa do Ceará"	,
+		  "Uruburetama"	,
+		  "Independência"	,
+		  "Paramoti"	,
+		  "Choró"	,
+		  "Itarema"	,
+		  "Itapipoca"	,
+		  "Acaraú"	,
+		  "Barro"	,
+		  "Quiterianópolis"	,
+		  "Boa Viagem"	,
+		  "Croatá"	,
+		  "Tarrafas"	,
+		  "Santana do Cariri"	,
+		  "Pacajus"	,
+		  "Saboeiro"	,
+		  "Jucás"	,
+		  "Santana do Acaraú"	,
+		  "Poranga"	,
+		  "Acopiara"	,
+		  "Caridade"	,
+		  "Pacatuba"	,
+		  "Aurora"	,
+		  "Palmácia"	,
+		  "Forquilha"	,
+		  "Canindé"	,
+		  "Madalena"	,
+		  "Barreira"	,
+		  "Ibiapina"	,
+		  "Jardim"	,
+		  "General Sampaio"	,
+		  "Salitre"	,
+		  "Umari"	,
+		  "Marco"	,
+		  "Amontada"	,
+		  "Massapê"	,
+		  "Missão Velha"	,
+		  "Morrinhos"	,
+		  "Guaraciaba do Norte"	,
+		  "Araripe"	,
+		  "Guaiúba"	,
+		  "Caucaia"	,
+		  "Itapajé"	,
+		  "Potengi"	,
+		  "Novo Oriente"	,
+		  "Granja"	,
+		  "Caririaçu"	,
+		  "Ubajara"	,
+		  "Abaiara"	,
+		  "Parambu"	,
+		  "Umirim"	,
+		  "Irauçuba"	,
+		  "Aiuaba"	,
+		  "Trairi"	,
+		  "Catarina"	,
+		  "Pedra Branca"]
 const mortes = [23	,
   26	,
   22	,
@@ -948,235 +948,234 @@ function App() {
   const [class8, setclass8] = useState(true)
   const [class9, setclass9] = useState(true)
   useEffect(() => {
-    setmin(Math.min(...mortes))
-    setmax(Math.max(...mortes))
-    const variacao =(max - min)/8
-    setintervalo(variacao)
+	setmin(Math.min(...mortes))
+	setmax(Math.max(...mortes))
+	const variacao =(max - min)/8
+	setintervalo(variacao)
   }, [min, max])
   function checarclasse(i){
-    if(i <= min+intervalo){
-      return class1
-    }
-    if(i >= min+intervalo && i < min+(intervalo*2)){
-      return class2
-    }
-    if(i >= min+(intervalo*2) & i < min+(intervalo*3)){
-      return class3
-    }
-    if(i >= min+(intervalo*3) & i < min+(intervalo*4)){
-      return class4
-    }
-    if(i >= min+(intervalo*4) & i < min+(intervalo*5)){
-      return class5
-    }
-    if(i >= min+(intervalo*5) & i < min+(intervalo*6)){
-      return class6
-    }
-    if(i >= min+(intervalo*6) & i < min+(intervalo*7)){
-      return class7
-    }
-    if(i >= min+(intervalo*7) & i < min+(intervalo*8)){
-      return class8
-    }
-    if(i >= min+(intervalo*8) & i <= max){
-      return class9
-    }
+	if(i <= min+intervalo){
+	  return class1
+	}
+	if(i >= min+intervalo && i < min+(intervalo*2)){
+	  return class2
+	}
+	if(i >= min+(intervalo*2) & i < min+(intervalo*3)){
+	  return class3
+	}
+	if(i >= min+(intervalo*3) & i < min+(intervalo*4)){
+	  return class4
+	}
+	if(i >= min+(intervalo*4) & i < min+(intervalo*5)){
+	  return class5
+	}
+	if(i >= min+(intervalo*5) & i < min+(intervalo*6)){
+	  return class6
+	}
+	if(i >= min+(intervalo*6) & i < min+(intervalo*7)){
+	  return class7
+	}
+	if(i >= min+(intervalo*7) & i < min+(intervalo*8)){
+	  return class8
+	}
+	if(i >= min+(intervalo*8) & i <= max){
+	  return class9
+	}
   }
   function show_class(i){
-    console.log(i)
-    if(i === 'class1'){
-      setclass1(true)
-      setclass2(false)
-      setclass3(false)
-      setclass4(false)
-      setclass5(false)
-      setclass6(false)
-      setclass7(false)
-      setclass8(false)
-      setclass9(false)
-    }
-    if(i === 'class2'){
-      setclass1(false)
-      setclass2(true)
-      setclass3(false)
-      setclass4(false)
-      setclass5(false)
-      setclass6(false)
-      setclass7(false)
-      setclass8(false)
-      setclass9(false)  
-    }
-    if(i === 'class3'){
-      setclass1(false)
-      setclass2(false)
-      setclass3(true)
-      setclass4(false)
-      setclass5(false)
-      setclass6(false)
-      setclass7(false)
-      setclass8(false)
-      setclass9(false)
+	console.log(i)
+	if(i === 'class1'){
+	  setclass1(true)
+	  setclass2(false)
+	  setclass3(false)
+	  setclass4(false)
+	  setclass5(false)
+	  setclass6(false)
+	  setclass7(false)
+	  setclass8(false)
+	  setclass9(false)
+	}
+	if(i === 'class2'){
+	  setclass1(false)
+	  setclass2(true)
+	  setclass3(false)
+	  setclass4(false)
+	  setclass5(false)
+	  setclass6(false)
+	  setclass7(false)
+	  setclass8(false)
+	  setclass9(false)  
+	}
+	if(i === 'class3'){
+	  setclass1(false)
+	  setclass2(false)
+	  setclass3(true)
+	  setclass4(false)
+	  setclass5(false)
+	  setclass6(false)
+	  setclass7(false)
+	  setclass8(false)
+	  setclass9(false)
   
-    }
-    if(i === 'class4'){
-      setclass1(false)
-      setclass2(false)
-      setclass3(false)
-      setclass4(true)
-      setclass5(false)
-      setclass6(false)
-      setclass7(false)
-      setclass8(false)
-      setclass9(false)  
-    }
-    if(i === 'class5'){
-      setclass1(false)
-      setclass2(false)
-      setclass3(false)
-      setclass4(false)
-      setclass5(true)
-      setclass6(false)
-      setclass7(false)
-      setclass8(false)
-      setclass9(false)
-    }
-    if(i === 'class6'){
-      setclass1(false)
-      setclass2(false)
-      setclass3(false)
-      setclass4(false)
-      setclass5(false)
-      setclass6(true)
-      setclass7(false)
-      setclass8(false)
-      setclass9(false)  
-    }
-    if(i === 'class7'){
-      setclass1(false)
-      setclass2(false)
-      setclass3(false)
-      setclass4(false)
-      setclass5(false)
-      setclass6(false)
-      setclass7(true)
-      setclass8(false)
-      setclass9(false)  
-    }
-    if(i === 'class8'){
-      setclass1(false)
-      setclass2(false)
-      setclass3(false)
-      setclass4(false)
-      setclass5(false)
-      setclass6(false)
-      setclass7(false)
-      setclass8(true)
-      setclass9(false)  
-    }
-    if(i === 'class9'){
-      setclass1(false)
-      setclass2(false)
-      setclass3(false)
-      setclass4(false)
-      setclass5(false)
-      setclass6(false)
-      setclass7(false)
-      setclass8(false)
-      setclass9(true)
-    }
-    if(i === 'todos'){
-      setclass1(true)
-      setclass2(true)
-      setclass3(true)
-      setclass4(true)
-      setclass5(true)
-      setclass6(true)
-      setclass7(true)
-      setclass8(true)
-      setclass9(true)
+	}
+	if(i === 'class4'){
+	  setclass1(false)
+	  setclass2(false)
+	  setclass3(false)
+	  setclass4(true)
+	  setclass5(false)
+	  setclass6(false)
+	  setclass7(false)
+	  setclass8(false)
+	  setclass9(false)  
+	}
+	if(i === 'class5'){
+	  setclass1(false)
+	  setclass2(false)
+	  setclass3(false)
+	  setclass4(false)
+	  setclass5(true)
+	  setclass6(false)
+	  setclass7(false)
+	  setclass8(false)
+	  setclass9(false)
+	}
+	if(i === 'class6'){
+	  setclass1(false)
+	  setclass2(false)
+	  setclass3(false)
+	  setclass4(false)
+	  setclass5(false)
+	  setclass6(true)
+	  setclass7(false)
+	  setclass8(false)
+	  setclass9(false)  
+	}
+	if(i === 'class7'){
+	  setclass1(false)
+	  setclass2(false)
+	  setclass3(false)
+	  setclass4(false)
+	  setclass5(false)
+	  setclass6(false)
+	  setclass7(true)
+	  setclass8(false)
+	  setclass9(false)  
+	}
+	if(i === 'class8'){
+	  setclass1(false)
+	  setclass2(false)
+	  setclass3(false)
+	  setclass4(false)
+	  setclass5(false)
+	  setclass6(false)
+	  setclass7(false)
+	  setclass8(true)
+	  setclass9(false)  
+	}
+	if(i === 'class9'){
+	  setclass1(false)
+	  setclass2(false)
+	  setclass3(false)
+	  setclass4(false)
+	  setclass5(false)
+	  setclass6(false)
+	  setclass7(false)
+	  setclass8(false)
+	  setclass9(true)
+	}
+	if(i === 'todos'){
+	  setclass1(true)
+	  setclass2(true)
+	  setclass3(true)
+	  setclass4(true)
+	  setclass5(true)
+	  setclass6(true)
+	  setclass7(true)
+	  setclass8(true)
+	  setclass9(true)
 
-    }
+	}
   }
   function mouseClick(){
-    if(click == true){
-      setclick(false)
-    }
-    else{
-      setclick(true)
-    }
+	if(click == true){
+	  setclick(false)
+	}
+	else{
+	  setclick(true)
+	}
   }
   function moverMouse(e){
-    if(click === true){
-      setcord({
-        x: e.clientX,
-        y: e.clienty
-      })
-      console.log(e.clientX)
-      console.log(e.clientY)
+	if(click === true){
+	  setcord({
+		x: e.clientX,
+		y: e.clienty
+	  })
+	  console.log(e.clientX)
+	  console.log(e.clientY)
   
-    }
+	}
   }
   return (
-    <div className="App">
-      <div className='descri'>
-        <div className='titulo'>
-          <h2>COVID</h2>
-          <img alt='covid' src={Covid}></img>
-        </div>
-        <div className='info'>
-          Esse mapa em questão disrespeito a quantidades a quantidade 
-          de óbitos, por cidade, decorrentes de COVID no estado do Ceará em 2021. Os dados foram obtidos através do site não governamental https://brasil.io/covid19/CE/  
-        </div>
-        <div style={{display:'flex', flexDirection:'column', width:'100%'}}>
-          <h2>Quantidade de mortos</h2>
-          <select onChange={(e) => show_class(e.target.value)} style={{width:'30%'}}>
-            <option value='todos'>Todos</option>
-              <option value='class1'>{min} - {Math.floor(min+intervalo)} mortes</option>
-             <option value='class2'>{Math.floor(min+intervalo)} - {Math.floor(min+(intervalo*2))} mortes</option>
-             <option value='class3'>{Math.floor(min+(intervalo*2))} - {Math.floor(min+(intervalo*3))} mortes</option>
-             <option value='class4'>{Math.floor(min+(intervalo*3))} - {Math.floor(min+(intervalo*4))} mortes</option>
-             <option value='class5'>{Math.floor(min+(intervalo*4))} - {Math.floor(min+(intervalo*5))} mortes</option>
-             <option value='class6'>{Math.floor(min+(intervalo*5))} - {Math.floor(min+(intervalo*6))} mortes</option>
-             <option value='class7'>{Math.floor(min+(intervalo*6))} - {Math.floor(min+(intervalo*7))} mortes</option>
-             <option value='class8'>{Math.floor(min+(intervalo*7))} - {Math.floor(min+(intervalo*8))} mortes</option>
-             <option value='class9'>{Math.floor(min+(intervalo*8))} - {max} mortes</option>
-          </select>
-        </div>
-        <div style={{width:'100%'}}>
-          <div className='progressbar'>
-            <div className='display' onMouseDown={() => mouseClick()} onMouseUp={() =>mouseClick()} onMouseMove={(event) => moverMouse(event)}></div>
-          </div>
-        </div>
-      </div>
-      <div className='Map'>
-        <ReactMapGL
-          initialViewState={{
-            latitude: -6.11839,
-            longitude: -38.5434,
-            zoom: 6
-          }}
+	<div className="App">
+	  <div className='descri'>
+		<div className='titulo'>
+		  <h2>COVID</h2>
+		  <img alt='covid' src={Covid}></img>
+		</div>
+		<div className='info'>
+		  Esse mapa em questão disrespeito a quantidades a quantidade 
+		  de óbitos, por cidade, decorrentes de COVID no estado do Ceará em 2021. Os dados foram obtidos através do site não governamental https://brasil.io/covid19/CE/  
+		</div>
+		<div style={{display:'flex', flexDirection:'column', width:'100%'}}>
+		  <h2>Quantidade de mortos</h2>
+		  <select onChange={(e) => show_class(e.target.value)} style={{width:'30%'}}>
+			<option value='todos'>Todos</option>
+			  <option value='class1'>{min} - {Math.floor(min+intervalo)} mortes</option>
+			 <option value='class2'>{Math.floor(min+intervalo)} - {Math.floor(min+(intervalo*2))} mortes</option>
+			 <option value='class3'>{Math.floor(min+(intervalo*2))} - {Math.floor(min+(intervalo*3))} mortes</option>
+			 <option value='class4'>{Math.floor(min+(intervalo*3))} - {Math.floor(min+(intervalo*4))} mortes</option>
+			 <option value='class5'>{Math.floor(min+(intervalo*4))} - {Math.floor(min+(intervalo*5))} mortes</option>
+			 <option value='class6'>{Math.floor(min+(intervalo*5))} - {Math.floor(min+(intervalo*6))} mortes</option>
+			 <option value='class7'>{Math.floor(min+(intervalo*6))} - {Math.floor(min+(intervalo*7))} mortes</option>
+			 <option value='class8'>{Math.floor(min+(intervalo*7))} - {Math.floor(min+(intervalo*8))} mortes</option>
+			 <option value='class9'>{Math.floor(min+(intervalo*8))} - {max} mortes</option>
+		  </select>
+		</div>
+		<div style={{width:'100%'}}>
+		  <div className='progressbar'>
+			<div className='display' onMouseDown={() => mouseClick()} onMouseUp={() =>mouseClick()} onMouseMove={(event) => moverMouse(event)}></div>
+		  </div>
+		</div>
+	  </div>
+	  <div className='Map'>
+		<ReactMapGL
+		  initialViewState={{
+			latitude: -6.11839,
+			longitude: -38.5434,
+			zoom: 6
+		  }}
 
-          mapStyle="mapbox://styles/mapbox/dark-v9"
-          mapboxAccessToken={MAPBOX_TOKEN}>
-            {cordenadas.map((item, index) =>(
-                <Marker key={index}  latitude={item.lat} longitude={item.lng} anchor="bottom" >
-                <div id={checarclasse(mortes[index])? 'ponto show': 'ponto'} style={{
-                  width:mortes[index]*0.1+'px', 
-                  height:mortes[index]*0.1+'px',
-                  minHeight:'5px',
-                  minWidth:'5px', 
-                  maxWidth:'50px', 
-                  maxHeight:'50px', 
-                  backgroundColor:colors[Math.floor(Math.random() * (colors.length - 0 + 1)) + 0]}} 
-                  className='img'>
-                    <div >{mortes[index]} mortes</div>
-                </div>
-              </Marker>
+		  mapStyle="mapbox://styles/mapbox/dark-v9"
+		  mapboxAccessToken={MAPBOX_TOKEN}>
+			{cordenadas.map((item, index) =>(
+				<Marker key={index}  latitude={item.lat} longitude={item.lng} anchor="bottom" >
+				<div id={checarclasse(mortes[index])? 'ponto show': 'ponto'} style={{
+				  width:'10px', 
+				  height:'10px',
+				  minHeight:'5px',
+				  minWidth:'5px', 
+				  maxWidth:'50px', 
+				  maxHeight:'50px', 
+				  backgroundColor:colors[Math.floor(Math.random() * (colors.length - 0 + 1)) + 0]}} 
+				  className='img'>
+				</div>
+			  </Marker>
 
-              ))}
-      </ReactMapGL>
-      </div>
-    </div>
+			  ))}
+	  </ReactMapGL>
+	  </div>
+	</div>
   );
 }
 export default App;
